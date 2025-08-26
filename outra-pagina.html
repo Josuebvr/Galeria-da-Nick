@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ni!</title>
+<style>
+  /* Reset */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body, html { width: 100%; height: 100%; overflow: hidden; }
+
+  /* Fundo dinâmico animado */
+  body {
+    background: linear-gradient(270deg, #d0c4f7, #a8d8f7, #e3ccff, #b2e0ff);
+    background-size: 800% 800%;
+    animation: gradientMove 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    position: relative;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Quadrado central */
+  .center-box {
+    width: 800px;
+    max-width: 90%;
+    border-radius: 20px;
+    background: #f7f3ff; /* cor clarinha */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1;
+    position: relative;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: #658CBB;
+    text-align: center;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+    text-align: justify;
+  }
+
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    align-self: center;
+    border: 4px solid #658CBB;
+  }
+
+  /* Mascote animado */
+  .mascote {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    z-index: 0;
+    cursor: pointer;
+  }
+
+  @media (max-width: 650px) {
+    .center-box {
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Mascote animado -->
+  <img src="rato.jpg" class="mascote" id="mascote" alt="Mascote">
+
+  <!-- Quadrado central -->
+  <div class="center-box">
+    <h1>Sobre a Nick</h1>
+    <img src="nicoly.jpg" alt="Foto da Nicoly" class="profile-pic">
+    <p>
+      Nicoly é uma artista apaixonada por cores, formas e a expressão criativa de cada detalhe. 
+      Seu trabalho busca conectar emoção e estética, criando obras que transmitem delicadeza e personalidade. 
+      Desde pequena, ela demonstra talento artístico, explorando técnicas diversas e sempre buscando inovar.
+    </p>
+    <p>
+      Cada obra de Nicoly é uma extensão de sua própria visão de mundo, refletindo sensibilidade, curiosidade e autenticidade. 
+      Ela acredita que a arte deve tocar o espectador, convidando-o a sentir e imaginar além do óbvio.
+    </p>
+    
+  </div>
+
+<script>
+  // Mascote animado
+  const mascote = document.getElementById("mascote");
+  const centerBox = document.querySelector(".center-box");
+
+  let x = Math.random() * (window.innerWidth - 100);
+  let y = Math.random() * (window.innerHeight - 100);
+  let dx = (Math.random() - 0.5) * 2;
+  let dy = (Math.random() - 0.5) * 2;
+
+  function moveMascote() {
+    x += dx;
+    y += dy;
+
+    const rect = centerBox.getBoundingClientRect();
+    if(x < 0 || x + 80 > window.innerWidth) dx *= -1;
+    if(y < 0 || y + 80 > window.innerHeight) dy *= -1;
+
+    if(x + 80 > rect.left && x < rect.right && y + 80 > rect.top && y < rect.bottom){
+      dx *= -1;
+      dy *= -1;
+      x += dx;
+      y += dy;
+    }
+
+    mascote.style.left = x + "px";
+    mascote.style.top = y + "px";
+
+    requestAnimationFrame(moveMascote);
+  }
+  moveMascote();
+
+  // Redirecionamento ao clicar no mascote (opcional)
+  mascote.addEventListener("click", () => {
+    window.location.href = "index.html"; // volta para a galeria
+  });
+</script>
+</body>
+</html>
