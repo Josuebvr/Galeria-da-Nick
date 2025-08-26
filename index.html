@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeria Minimalista com Mascote</title>
+<style>
+  /* Reset */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body, html { width: 100%; height: 100%; overflow: hidden; }
+
+  /* Fundo dinâmico animado */
+  body {
+    background: linear-gradient(270deg, #d0c4f7, #a8d8f7, #e3ccff, #b2e0ff);
+    background-size: 800% 800%;
+    animation: gradientMove 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    position: relative;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Quadrado central */
+  .center-box {
+    width: 800px;
+    height: 600px;
+    border-radius: 20px;
+    background: #f7f3ff;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    padding: 20px;
+    z-index: 1;
+    position: relative;
+  }
+
+  /* Itens da galeria */
+  .item {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+  }
+
+  .item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  }
+
+  .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Overlay */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+  }
+
+  .overlay img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  }
+
+  @keyframes fadeIn { to { opacity: 1; } }
+  @keyframes fadeOut { to { opacity: 0; } }
+
+  /* Mascote animado */
+  .mascote {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    z-index: 0;
+    cursor: pointer;
+  }
+
+  /* Responsividade */
+  @media (max-width: 950px) {
+    .center-box {
+      width: 90%;
+      height: auto;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .center-box {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Mascote que se move -->
+  <img src="rato.jpg" class="mascote" id="mascote" alt="Mascote">
+
+  <!-- Quadrado central -->
+  <div class="center-box">
+    <div class="item"><img src="arte1.jpg" alt="Foto 1"></div>
+    <div class="item"><img src="arte2.jpg" alt="Foto 2"></div>
+    <div class="item"><img src="arte3.jpg" alt="Foto 3"></div>
+    <div class="item"><img src="arte4.jpg" alt="Foto 4"></div>
+    <div class="item"><img src="arte5.jpg" alt="Foto 5"></div>
+    <div class="item"><img src="arte6.jpg" alt="Foto 6"></div>
+  </div>
+
+<script>
+  // Overlay da galeria
+  document.querySelectorAll(".item img").forEach(img => {
+    img.addEventListener("click", (e) => {
+      e.stopPropagation(); // evita conflito com hover
+      let overlay = document.createElement("div");
+      overlay.classList.add("overlay");
+      overlay.innerHTML = `<img src="${img.src}" alt="">`;
+      document.body.appendChild(overlay);
+
+      // Fecha overlay clicando fora da imagem
+      overlay.addEventListener("click", e => {
+        if(e.target === overlay){
+          overlay.style.animation = "fadeOut 0.3s forwards";
+          overlay.addEventListener("animationend", () => overlay.remove());
+        }
+      });
+    });
+  });
+
+  // Mascote animado
+  const mascote = document.getElementById("mascote");
+  const centerBox = document.querySelector(".center-box");
+
+  let x = Math.random() * (window.innerWidth - 100);
+  let y = Math.random() * (window.innerHeight - 100);
+  let dx = (Math.random() - 0.5) * 2;
+  let dy = (Math.random() - 0.5) * 2;
+
+  function moveMascote() {
+    x += dx;
+    y += dy;
+
+    // Limitar movimento para não atravessar o quadrado central
+    const rect = centerBox.getBoundingClientRect();
+    if(x < 0 || x + 80 > window.innerWidth) dx *= -1;
+    if(y < 0 || y + 80 > window.innerHeight) dy *= -1;
+
+    if(x + 80 > rect.left && x < rect.right && y + 80 > rect.top && y < rect.bottom){
+      dx *= -1;
+      dy *= -1;
+      x += dx;
+      y += dy;
+    }
+
+    mascote.style.left = x + "px";
+    mascote.style.top = y + "px";
+
+    requestAnimationFrame(moveMascote);
+  }
+  moveMascote();
+
+  // Redirecionamento ao clicar
+  mascote.addEventListener("click", () => {
+    window.location.href = "outra-pagina.html"; // Substitua pelo seu link
+  });
+</script>
+
+</body>
+</html>
