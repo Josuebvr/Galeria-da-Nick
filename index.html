@@ -105,6 +105,14 @@
     cursor: pointer;
   }
 
+    .ratinho:hover {
+  animation: jump 0.5s;
+}
+@keyframes jump {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
   /* Responsividade */
   @media (max-width: 650px) {
     .center-box {
