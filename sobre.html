@@ -1,93 +1,114 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ni!</title>
-<style>
-  /* Reset */
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body, html { width: 100%; height: 100%; overflow: hidden; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ni!</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  /* Fundo dinâmico animado */
-  body {
-    background: linear-gradient(270deg, #d0c4f7, #a8d8f7, #e3ccff, #b2e0ff);
-    background-size: 800% 800%;
-    animation: gradientMove 15s ease infinite;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, sans-serif;
-    position: relative;
-  }
+    body,
+    html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
 
-  @keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+    /* Fundo dinâmico animado */
+    body {
+      background: linear-gradient(270deg, #d0c4f7, #a8d8f7, #e3ccff, #b2e0ff);
+      background-size: 800% 800%;
+      animation: gradientMove 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      position: relative;
+    }
 
-  /* Quadrado central */
-  .center-box {
-    width: 800px;
-    max-width: 90%;
-    border-radius: 20px;
-    background: #f7f3ff; /* cor clarinha */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    z-index: 1;
-    position: relative;
-  }
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
 
-  h1 {
-    font-size: 2rem;
-    color: #658CBB;
-    text-align: center;
-  }
+      50% {
+        background-position: 100% 50%;
+      }
 
-  p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #4a4a4a;
-    text-align: justify;
-  }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
 
-  .profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    align-self: center;
-    border: 4px solid #658CBB;
-  }
-
-  /* Ratinho animado */
-  .ratinho {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    z-index: 0;
-    cursor: pointer;
-  }
-
-  @media (max-width: 650px) {
+    /* Quadrado central */
     .center-box {
-      padding: 20px;
+      width: 800px;
+      max-width: 90%;
+      border-radius: 20px;
+      background: #f7f3ff;
+      /* cor clarinha */
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 1;
+      position: relative;
     }
 
     h1 {
-      font-size: 1.6rem;
+      font-size: 2rem;
+      color: #658CBB;
+      text-align: center;
     }
 
     p {
-      font-size: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #4a4a4a;
+      text-align: justify;
     }
-  }
-</style>
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      align-self: center;
+      border: 4px solid #658CBB;
+    }
+
+    /* Ratinho animado */
+    .ratinho {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      z-index: 0;
+      cursor: pointer;
+    }
+
+    @media (max-width: 650px) {
+      .center-box {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
   <!-- Ratinho animado -->
@@ -98,69 +119,86 @@
     <h1>Sobre a Nick</h1>
     <img src="nicoly.jpg" alt="Foto da Nicoly" class="profile-pic">
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua.
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
       Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua.
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     </p>
-    
+
   </div>
 
-<script>
-  // Ratinho animado (Ele não vai entrar nem nascer dentro da caixa central)
+  <script>
+    // Ratinho animado
     const ratinho = document.getElementById("ratinho");
     const centerBox = document.querySelector(".center-box");
 
-    function getRandomPositionOutsideCenterBox() {
+    function getRandomPosition() {
       const rect = centerBox.getBoundingClientRect();
       let x, y;
-      do {
-        x = Math.random() * (window.innerWidth - 100);
-        y = Math.random() * (window.innerHeight - 100);
-      } while (
-        x + 80 > rect.left && x < rect.right &&
-        y + 80 > rect.top && y < rect.bottom
-      );
+      const isMobile = window.innerWidth <= 650;
+
+      if (isMobile) {
+        // topo ou inferior
+        y = Math.random() < 0.5 ? Math.random() * (rect.top - 80) : rect.bottom + Math.random() * (window.innerHeight - rect.bottom - 80);
+        x = Math.random() * (window.innerWidth - 80);
+      } else {
+        // laterais
+        x = Math.random() < 0.5 ? Math.random() * (rect.left - 80) : rect.right + Math.random() * (window.innerWidth - rect.right - 80);
+        y = Math.random() * (window.innerHeight - 80);
+      }
       return { x, y };
     }
 
-    let pos = getRandomPositionOutsideCenterBox();
-    let x = pos.x;
-    let y = pos.y;
+    let pos = getRandomPosition();
+    let x = pos.x, y = pos.y;
     let dx = (Math.random() - 0.5) * 2;
     let dy = (Math.random() - 0.5) * 2;
 
     function moveRatinho() {
+      const isMobile = window.innerWidth <= 650;
+      const rect = centerBox.getBoundingClientRect();
       x += dx;
       y += dy;
 
-      // Isso aqui não deixa ele entrar no quadrado, não muda isso por favor
-      const rect = centerBox.getBoundingClientRect();
-      if (x < 0 || x + 80 > window.innerWidth) dx *= -1;
-      if (y < 0 || y + 80 > window.innerHeight) dy *= -1;
+      if (isMobile) {
+        // Limita topo/inferior
+        const limitTop = 0, limitBottom = rect.top - 80;
+        const limitTop2 = rect.bottom, limitBottom2 = window.innerHeight - 80;
 
-      if (x + 80 > rect.left && x < rect.right && y + 80 > rect.top && y < rect.bottom) {
-        dx *= -1;
-        dy *= -1;
-        x += dx;
-        y += dy;
+        if ((y < limitTop || y > limitBottom) && (y < limitTop2 || y > limitBottom2)) dy *= -1;
+        if (x < 0 || x + 80 > window.innerWidth) dx *= -1;
+
+      } else {
+        // Limita laterais
+        const limitLeft = 0, limitRight = rect.left - 80;
+        const limitLeft2 = rect.right, limitRight2 = window.innerWidth - 80;
+
+        if ((x < limitLeft || x > limitRight) && (x < limitLeft2 || x > limitRight2)) dx *= -1;
+        if (y < 0 || y + 80 > window.innerHeight) dy *= -1;
       }
 
-    ratinho.style.left = x + "px";
-    ratinho.style.top = y + "px";
+      // Impede atravessar o quadrado central
+      if (x + 80 > rect.left && x < rect.right && y + 80 > rect.top && y < rect.bottom) {
+        dx *= -1; dy *= -1;
+        x += dx; y += dy;
+      }
 
-    requestAnimationFrame(moveRatinho);
-  }
-  moveRatinho();
+      ratinho.style.left = x + "px";
+      ratinho.style.top = y + "px";
 
-  // Redirecionamento ao clicar no ratinho 
-  ratinho.addEventListener("click", () => {
-    window.location.href = "index.html"; // volta para a galeria
-  });
-</script>
+      requestAnimationFrame(moveRatinho);
+    }
+    moveRatinho();
+
+    // Redirecionamento ao clicar
+    ratinho.addEventListener("click", () => { window.location.href = "index.html"; });
+  </script>
 </body>
+
 </html>
