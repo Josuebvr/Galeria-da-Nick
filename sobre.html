@@ -64,8 +64,8 @@
     border: 4px solid #658CBB;
   }
 
-  /* Mascote animado */
-  .mascote {
+  /* Ratinho animado */
+  .ratinho {
     position: absolute;
     width: 80px;
     height: 80px;
@@ -90,8 +90,8 @@
 </head>
 <body>
 
-  <!-- Mascote animado -->
-  <img src="rato.jpg" class="mascote" id="mascote" alt="Mascote">
+  <!-- Ratinho animado -->
+  <img src="rato.jpg" class="ratinho" id="ratinho" alt="Ratinho">
 
   <!-- Quadrado central -->
   <div class="center-box">
@@ -110,39 +110,54 @@
   </div>
 
 <script>
-  // Mascote animado
-  const mascote = document.getElementById("mascote");
-  const centerBox = document.querySelector(".center-box");
+  // Ratinho animado (Ele não vai entrar nem nascer dentro da caixa central)
+    const ratinho = document.getElementById("ratinho");
+    const centerBox = document.querySelector(".center-box");
 
-  let x = Math.random() * (window.innerWidth - 100);
-  let y = Math.random() * (window.innerHeight - 100);
-  let dx = (Math.random() - 0.5) * 2;
-  let dy = (Math.random() - 0.5) * 2;
-
-  function moveMascote() {
-    x += dx;
-    y += dy;
-
-    const rect = centerBox.getBoundingClientRect();
-    if(x < 0 || x + 80 > window.innerWidth) dx *= -1;
-    if(y < 0 || y + 80 > window.innerHeight) dy *= -1;
-
-    if(x + 80 > rect.left && x < rect.right && y + 80 > rect.top && y < rect.bottom){
-      dx *= -1;
-      dy *= -1;
-      x += dx;
-      y += dy;
+    function getRandomPositionOutsideCenterBox() {
+      const rect = centerBox.getBoundingClientRect();
+      let x, y;
+      do {
+        x = Math.random() * (window.innerWidth - 100);
+        y = Math.random() * (window.innerHeight - 100);
+      } while (
+        x + 80 > rect.left && x < rect.right &&
+        y + 80 > rect.top && y < rect.bottom
+      );
+      return { x, y };
     }
 
-    mascote.style.left = x + "px";
-    mascote.style.top = y + "px";
+    let pos = getRandomPositionOutsideCenterBox();
+    let x = pos.x;
+    let y = pos.y;
+    let dx = (Math.random() - 0.5) * 2;
+    let dy = (Math.random() - 0.5) * 2;
 
-    requestAnimationFrame(moveMascote);
+    function moveRatinho() {
+      x += dx;
+      y += dy;
+
+      // Isso aqui não deixa ele entrar no quadrado, não muda isso por favor
+      const rect = centerBox.getBoundingClientRect();
+      if (x < 0 || x + 80 > window.innerWidth) dx *= -1;
+      if (y < 0 || y + 80 > window.innerHeight) dy *= -1;
+
+      if (x + 80 > rect.left && x < rect.right && y + 80 > rect.top && y < rect.bottom) {
+        dx *= -1;
+        dy *= -1;
+        x += dx;
+        y += dy;
+      }
+
+    ratinho.style.left = x + "px";
+    ratinho.style.top = y + "px";
+
+    requestAnimationFrame(moveRatinho);
   }
-  moveMascote();
+  moveRatinho();
 
-  // Redirecionamento ao clicar no mascote (opcional)
-  mascote.addEventListener("click", () => {
+  // Redirecionamento ao clicar no ratinho 
+  ratinho.addEventListener("click", () => {
     window.location.href = "index.html"; // volta para a galeria
   });
 </script>
