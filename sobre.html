@@ -23,9 +23,10 @@
 
     /* Fundo dinâmico animado */
     body {
-      background: linear-gradient(270deg, #d0c4f7, #a8d8f7, #e3ccff, #b2e0ff);
+      /* background: linear-gradient(270deg, #d0c4f7, #a8d8f7, #e3ccff, #b2e0ff); */
+      background: #658CBB;
       background-size: 800% 800%;
-      animation: gradientMove 15s ease infinite;
+      animation: gradientMove 600s ease infinite;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -46,6 +47,110 @@
         background-position: 0% 50%;
       }
     }
+
+    :root{
+  --lilac-1: #f7f3ff; /* base clarinha */
+  --lilac-2: #e6dfff;
+  --blue-1:  #dff6ff;
+  --accent:  #bfaef3;
+  --dot: rgba(255,255,255,0.85);
+  --star: rgba(255,255,255,0.65);
+}
+
+/* Aplica o papel de parede fofo — usar em body ou .wallpaper */
+.wallpaper {
+  /* camada 1: gradiente animado (suave) */
+  background-color: var(--lilac-2);
+  background-image:
+    linear-gradient(120deg, rgba(191,174,243,0.12) 0%, rgba(178,224,255,0.10) 35%, rgba(227,204,255,0.10) 65%, rgba(178,224,255,0.08) 100%),
+    /* camada 2: padrão de bolinhas (repetição com radial-gradients) */
+    radial-gradient(circle at 8% 12%, var(--dot) 2px, transparent 3px),
+    radial-gradient(circle at 40% 30%, var(--dot) 1.6px, transparent 3px),
+    radial-gradient(circle at 72% 18%, var(--dot) 1.8px, transparent 3px),
+    radial-gradient(circle at 22% 72%, var(--dot) 1.5px, transparent 3px),
+    radial-gradient(circle at 58% 60%, var(--dot) 2px, transparent 3px),
+    /* camada 3: pequenas cruzes/estrelas feitas com linear-gradients */
+    linear-gradient(45deg, transparent 49%, var(--star) 50%, var(--star) 51%, transparent 52%),
+    linear-gradient(-45deg, transparent 49%, var(--star) 50%, var(--star) 51%, transparent 52%);
+
+  /* define tamanhos e repetição para cada camada (último corresponde às últimas linhas) */
+  background-size:
+    100% 100%,        /* gradient full */
+    220px 220px,      /* radial 1 pattern */
+    220px 220px,      /* radial 2 */
+    220px 220px,
+    220px 220px,
+    220px 220px,
+    44px 44px,        /* small cross/star tile */
+    44px 44px;
+
+  /* deslocamento dos padrões para não ficarem alinhados */
+  background-position:
+    0 0,
+    0 0,
+    110px 110px,
+    55px 30px,
+    30px 140px,
+    170px 80px,
+    0 0,
+    22px 22px;
+
+  /* suaviza aparência */
+  background-repeat: repeat;
+  transition: background 400ms ease;
+}
+
+/* leve variação de cor ao passar o mouse — opcional */
+.wallpaper:hover {
+  background-image:
+    linear-gradient(120deg, rgba(191,174,243,0.16) 0%, rgba(178,224,255,0.14) 35%, rgba(227,204,255,0.12) 65%, rgba(178,224,255,0.10) 100%),
+    radial-gradient(circle at 8% 12%, var(--dot) 2px, transparent 3px),
+    radial-gradient(circle at 40% 30%, var(--dot) 1.6px, transparent 3px),
+    radial-gradient(circle at 72% 18%, var(--dot) 1.8px, transparent 3px),
+    radial-gradient(circle at 22% 72%, var(--dot) 1.5px, transparent 3px),
+    radial-gradient(circle at 58% 60%, var(--dot) 2px, transparent 3px),
+    linear-gradient(45deg, transparent 49%, var(--star) 50%, var(--star) 51%, transparent 52%),
+    linear-gradient(-45deg, transparent 49%, var(--star) 50%, var(--star) 51%, transparent 52%);
+}
+
+/* RESPONSIVO: menos “ruído” no celular (padrão mais limpo) */
+@media (max-width: 650px) {
+  .wallpaper {
+    background-size:
+      100% 100%,
+      320px 320px,
+      320px 320px,
+      320px 320px,
+      320px 320px,
+      320px 320px,
+      60px 60px,
+      60px 60px;
+
+    background-position:
+      0 0,
+      40px 20px,
+      160px 160px,
+      80px 40px,
+      40px 200px,
+      200px 120px,
+      0 0,
+      30px 30px;
+  }
+}
+
+/* utilitário: se quiser usar o wallpaper só no fundo (body) mantendo center-box z-index */
+body.wallpaper { min-height:100vh; }
+
+/* exemplo: deixar o pattern um pouco mais contrastado para download de wallpaper */
+.wallpaper--download {
+  background-image: linear-gradient(120deg, var(--lilac-2), var(--blue-1)),
+    radial-gradient(circle at 8% 12%, rgba(255,255,255,0.95) 2px, transparent 3px),
+    radial-gradient(circle at 40% 30%, rgba(255,255,255,0.95) 1.8px, transparent 3px),
+    radial-gradient(circle at 72% 18%, rgba(255,255,255,0.95) 2px, transparent 3px);
+  background-size: 100% 100%, 180px 180px, 180px 180px, 180px 180px;
+  background-position: 0 0, 0 0, 90px 90px, 45px 45px;
+}
+
 
     /* Quadrado central */
     .center-box {
@@ -118,7 +223,7 @@
   </style>
 </head>
 
-<body>
+<body class="wallpaper">
 
   <!-- Ratinho animado -->
   <img src="rato.jpg" class="ratinho" id="ratinho" alt="Ratinho">
