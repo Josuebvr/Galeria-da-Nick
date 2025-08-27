@@ -48,7 +48,7 @@ body.star-wallpaper {
   background: white;
   border-radius: 50%;
   opacity: 0.8;
-  animation: twinkle 2s infinite ease-in-out;
+  animation: twinkle 10s infinite ease-in-out;
 }
 
 /* Estrelas piscando */
@@ -226,12 +226,18 @@ body.star-wallpaper {
   <!-- estrela cadente -->
 <!--  <div class="shooting-star" style="top:10%; left:10%;"></div> -->
 
-<!-- constelação de aries -->
-<div class="constelacao-aries">
-  <div class="estrela" style="top:10%; left:10%;"></div>
-  <div class="estrela" style="top:30%; left:25%;"></div>
-  <div class="estrela" style="top:45%; left:45%;"></div>
-  <div class="estrela" style="top:40%; left:70%;"></div>
+  <!-- Constelacão de Áries -->
+<div class="constellation" style="position:absolute; top:20%; right:10%; width:200px; height:300px; z-index:1;">
+  <div class="star" style="width:6px; height:6px; top:0%; left:0%;"></div>
+  <div class="star" style="width:5px; height:5px; top:20%; left:25%;"></div>
+  <div class="star" style="width:5px; height:5px; top:50%; left:50%;"></div>
+  <div class="star" style="width:4px; height:4px; top:80%; left:75%;"></div>
+
+  <svg style="position:absolute; top:0; left:0; width:100%; height:100%;">
+  <!--  <line x1="0%" y1="0%" x2="25%" y2="20%" stroke="rgba(255,255,255,0.9)" stroke-width="2"/> -->
+  <!--  <line x1="25%" y1="20%" x2="50%" y2="50%" stroke="rgba(255,255,255,0.9)" stroke-width="2"/> -->
+  <!--  <line x1="50%" y1="50%" x2="75%" y2="80%" stroke="rgba(255,255,255,0.9)" stroke-width="2"/> -->
+  </svg>
 </div>
 
 <img src="rato.jpg" class="ratinho" id="ratinho" alt="Ratinho">
